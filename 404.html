@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 — Emmanuel Diaz</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23fff'/><text x='50' y='68' font-family='Georgia,serif' font-size='52' font-weight='bold' text-anchor='middle' fill='%23111'>ED</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { height:100%; }
+body {
+  background:#ffffff;
+  color:#111111;
+  font-family:'Montserrat', sans-serif;
+  font-weight:300;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  min-height:100vh;
+  text-align:center;
+  padding:40px 24px;
+}
+
+/* CURSOR */
+.cursor { position:fixed;width:8px;height:8px;background:#111;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .3s,height .3s; }
+.cursor-ring { position:fixed;width:36px;height:36px;border:1px solid #111;border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all .08s ease; }
+
+.logo {
+  font-family:'Cormorant Garamond', serif;
+  font-size:14px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:#999;
+  margin-bottom:60px;
+  text-decoration:none;
+  display:block;
+  transition:color .2s;
+}
+.logo:hover { color:#111; }
+
+.num {
+  font-family:'Cormorant Garamond', serif;
+  font-size:clamp(120px, 22vw, 220px);
+  font-weight:300;
+  line-height:1;
+  color:#111;
+  letter-spacing:-4px;
+  margin-bottom:8px;
+}
+
+.divider {
+  width:40px;
+  height:1px;
+  background:#111;
+  margin:24px auto;
+}
+
+.title {
+  font-family:'Cormorant Garamond', serif;
+  font-size:clamp(22px, 4vw, 36px);
+  font-weight:300;
+  font-style:italic;
+  margin-bottom:16px;
+  color:#111;
+}
+
+.sub {
+  font-size:11px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:#999;
+  margin-bottom:52px;
+  line-height:1.8;
+}
+
+.btn {
+  display:inline-block;
+  padding:14px 44px;
+  background:#111;
+  color:#fff;
+  text-decoration:none;
+  font-size:10px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  font-family:'Montserrat', sans-serif;
+  font-weight:300;
+  transition:opacity .25s;
+  cursor:none;
+}
+.btn:hover { opacity:.7; }
+
+.footer-note {
+  position:fixed;
+  bottom:28px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:10px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:#ccc;
+  white-space:nowrap;
+}
+
+/* Animated shutter */
+.shutter {
+  width:64px;
+  height:64px;
+  margin:0 auto 32px;
+  position:relative;
+  opacity:.15;
+}
+.shutter::before, .shutter::after {
+  content:'';
+  position:absolute;
+  border:2px solid #111;
+  border-radius:50%;
+}
+.shutter::before { inset:0; }
+.shutter::after { inset:12px; animation:blink 2.5s ease-in-out infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.2} }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<a href="/" class="logo">Emmanuel Diaz</a>
+
+<div class="shutter"></div>
+
+<div class="num">404</div>
+
+<div class="divider"></div>
+
+<h1 class="title">Página no encontrada</h1>
+
+<p class="sub">
+  La página que buscas no existe<br>
+  o fue movida a otro lugar
+</p>
+
+<a href="/" class="btn">Volver al portfolio</a>
+
+<div class="footer-note">emmanueldiaz.site</div>
+
+<script>
+const cur = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+document.addEventListener('mousemove', e => {
+  cur.style.left = e.clientX + 'px';
+  cur.style.top  = e.clientY + 'px';
+  ring.style.left = e.clientX + 'px';
+  ring.style.top  = e.clientY + 'px';
+});
+document.querySelectorAll('a').forEach(el => {
+  el.addEventListener('mouseenter', () => { cur.style.width='4px'; cur.style.height='4px'; ring.style.width='50px'; ring.style.height='50px'; });
+  el.addEventListener('mouseleave', () => { cur.style.width='8px'; cur.style.height='8px'; ring.style.width='36px'; ring.style.height='36px'; });
+});
+</script>
+</body>
+</html>
